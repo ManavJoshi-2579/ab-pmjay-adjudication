@@ -1,33 +1,44 @@
 # NHA STG-Based Adjudication System
 
-A production-ready, explainable claim adjudication system for PMJAY-style healthcare workflows. The project evaluates multi-document claim packets against Standard Treatment Guidelines (STGs), reconstructs claim timelines, validates supporting evidence, and produces deterministic pass/fail decisions with traceable reasons.
+An explainable, production-style claim adjudication pipeline for PMJAY/NHA workflows that reads healthcare claim packets, reconstructs evidence across documents, validates them against Standard Treatment Guidelines, and produces auditable pass/fail decisions.
 
-## Overview
+## Problem Statement
 
-This repository is designed for evaluation and demo readiness. It combines configurable rules, STG-aware validation, document parsing, OCR adapters, and explainability outputs into a single adjudication pipeline that can be run locally with `main.py` or exposed through the API layer.
+Healthcare claim review is slow, document-heavy, and difficult to standardize. Adjudicators must inspect claim forms, discharge summaries, procedure notes, and bills, then decide whether the record is complete, clinically consistent, and aligned with treatment guidelines. That creates delay, inconsistency, and room for fraud or avoidable reimbursement error.
 
-## Core Features
+## Solution Overview
 
-- STG-driven adjudication using configurable rules and discovered STG documents.
-- Procedure-agnostic pipeline that operates across varied claim types and document mixes.
-- Explainable decisions with evidence traces, debug artifacts, and reasoned outcomes.
-- Modular architecture covering OCR, extraction, classification, rules, timeline, recovery, and decisioning.
-- Safe local execution with deterministic fallbacks when heavyweight ML dependencies are unavailable.
+This repository presents a modular adjudication system that ingests claim documents, applies OCR and document understanding, extracts structured evidence, reconstructs the patient timeline, validates the packet against STG-based rules, and returns an explainable decision with reasons and confidence.
 
-## Architecture
+The goal is not a narrow, single-procedure checker. It is a procedure-agnostic STG-driven system designed to generalize across claim types while keeping the decision path transparent.
 
-The project is organized into focused modules:
+## Key Features
 
-- `src/core/`: pipeline orchestration and claim processing flow.
-- `src/ocr/`: OCR backends and ensemble wrappers.
-- `src/classification/`, `src/extraction/`, `src/timeline/`: document understanding and temporal reconstruction.
-- `src/rules/`: STG loading, document validation, anomaly detection, and clinical checks.
-- `src/decision/`: confidence scoring and final adjudication.
-- `src/explainability/`: evidence tracing and report generation.
-- `api/`: FastAPI serving layer for programmatic access.
-- `configs/`: YAML/JSON configuration, thresholds, and rule definitions.
-- `scripts/`: pipeline utilities, training helpers, and synthetic-data generation.
-- `data/`: local input, synthetic, and STG source material.
+- OCR-ready pipeline with OCR adapters and safe local fallbacks.
+- Document classification across heterogeneous claim packet inputs.
+- Structured extraction of clinical, billing, and timeline evidence.
+- STG-driven validation using configurable rules and treatment-guideline documents.
+- Rule engine for document sufficiency, chronology, anomaly, and clinical checks.
+- Decision engine that consolidates signals into a final adjudication with confidence.
+- Explainability layer that surfaces reasons, evidence, and reviewer-friendly traces.
+
+## System Flow
+
+```text
+Claim Packet
+    ->
+OCR / Text Recovery
+    ->
+Document Classification
+    ->
+Field Extraction + Timeline Reconstruction
+    ->
+STG Validation + Rule Engine Checks
+    ->
+Decision Engine
+    ->
+Explainable JSON Output + Evidence Trace
+```
 
 ## How To Run
 
@@ -37,58 +48,114 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Run the adjudication pipeline:
+Generate synthetic evaluation cases:
+
+```bash
+python scripts/generate_synthetic.py
+```
+
+Run the full adjudication pipeline:
 
 ```bash
 python -B main.py
 ```
 
-Run the helper pipeline script:
-
-```bash
-python scripts/run_pipeline.py --input-dir data/input
-```
-
-Run tests:
+Optional supporting commands:
 
 ```bash
 pytest
-```
-
-Run the API locally:
-
-```bash
 uvicorn api.app:app --reload
 ```
 
-## Processing Flow
+## Project Structure
 
-1. Claim documents are loaded from the configured input directories.
-2. OCR and document parsing extract structured evidence from the packet.
-3. Timeline reconstruction and rule validation check consistency and medical flow.
-4. STG and document checks evaluate claim sufficiency and procedural alignment.
-5. The decision engine emits an explainable adjudication with confidence and reasons.
+```text
+.
+|-- api/                 FastAPI interface for serving adjudication results
+|-- configs/             Pipeline, threshold, and rule configuration
+|-- data/
+|   |-- input/           Sample and generated claim packets
+|   |-- stg/             STG source documents used by validation
+|   `-- synthetic/       Synthetic source fixtures for demo scenarios
+|-- docs/                Demo walkthrough and submission notes
+|-- evaluation/          Validation and scoring utilities
+|-- scripts/             Synthetic generation and helper scripts
+|-- src/
+|   |-- classification/  Document classification logic
+|   |-- core/            Pipeline orchestration and state handling
+|   |-- decision/        Confidence scoring and final decisioning
+|   |-- explainability/  Evidence tracing and reporting
+|   |-- extraction/      Structured data extraction
+|   |-- ocr/             OCR adapters and ensemble wrappers
+|   |-- recovery/        Fallback and low-confidence recovery logic
+|   |-- rules/           STG parsing, rule engine, anomaly checks
+|   |-- timeline/        Event extraction and temporal validation
+|   `-- vision/          Vision-stage utilities
+|-- tests/               Pipeline and rule validation tests
+|-- README.md
+`-- main.py              Main batch entrypoint
+```
 
-## Output Format
+## Validation Scenarios
 
-Typical outputs include a final decision payload, debug details, and evidence text files. A representative decision object looks like:
+Representative cases included in the repository:
+
+- `valid_claim`: clean packet expected to pass.
+- `missing_document`: incomplete supporting evidence.
+- `clinical_violation`: medically inconsistent or clinically unsafe record.
+- `stg_doc_claim`: demonstrates STG-backed validation.
+- Synthetic edge cases for noisy OCR, conflicting data, wrong sequence, mixed documents, and misleading layouts.
+
+## Output Example
 
 ```json
 {
-  "claim_id": "example-claim",
-  "documents": [],
-  "timeline": [],
+  "claim_id": "valid_claim",
+  "documents": [
+    {
+      "document_type": "claim_form",
+      "confidence": 0.96
+    }
+  ],
+  "timeline": [
+    {
+      "event": "admission",
+      "date": "2026-04-18"
+    },
+    {
+      "event": "procedure",
+      "date": "2026-04-19"
+    }
+  ],
   "decision": {
     "status": "Pass",
-    "confidence": 0.0,
-    "reasons": [],
-    "evidence": []
+    "confidence": 0.8805,
+    "reasons": [
+      "Required documents detected",
+      "Timeline is clinically consistent",
+      "Claim aligns with STG-supported expectations"
+    ],
+    "evidence": [
+      "procedure_note",
+      "discharge_summary",
+      "bill"
+    ]
   }
 }
 ```
 
-## Reproducibility Notes
+## Key Differentiator
 
-- Generated outputs, logs, caches, and local environment files are excluded from version control.
-- The repository is structured so the project can be cloned and run locally with standard Python tooling.
-- Heuristic wrappers can be replaced with production OCR and model integrations without changing the orchestration contract.
+This project is built as a procedure-agnostic STG-driven system. Instead of hardcoding a single use case, it validates claim packets through configurable treatment-guideline logic, making the architecture more extensible, reusable, and suitable for real adjudication workflows.
+
+## Impact
+
+- Reduces manual review effort for high-volume healthcare claims.
+- Improves consistency through configurable STG and rule logic.
+- Increases reviewer trust through explainable outputs rather than opaque scoring.
+- Helps surface fraud, missing evidence, and chronology inconsistencies earlier in the workflow.
+
+## Author And Status
+
+- Author: Manav Joshi
+- Status: Final submission polish complete and repository prepared for hackathon evaluation

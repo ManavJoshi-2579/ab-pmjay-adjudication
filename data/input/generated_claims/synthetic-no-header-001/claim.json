@@ -1,0 +1,5 @@
+{
+  "claim_id": "synthetic-no-header-001",
+  "scenario": "removed_headers",
+  "claim_type": "medical_claim"
+}

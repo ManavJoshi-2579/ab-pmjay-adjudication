@@ -1,0 +1,5 @@
+{
+  "claim_id": "synthetic-missing-fields-001",
+  "scenario": "missing_fields",
+  "claim_type": "surgery_claim"
+}

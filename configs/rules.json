@@ -1,0 +1,87 @@
+{
+  "required_documents": {
+    "surgery_claim": ["claim_form", "discharge_summary", "procedure_note", "bill"],
+    "medical_claim": ["claim_form", "discharge_summary", "bill"]
+  },
+  "date_order": [
+    ["admission", "procedure"],
+    ["procedure", "discharge"]
+  ],
+  "amount_rules": {
+    "max_claim_amount": 500000,
+    "require_positive_amount": true
+  },
+  "stg_documents": [],
+  "stg_packages": [
+    {
+      "package_id": "appendicitis_appendectomy",
+      "package_name": "Appendicitis Appendectomy",
+      "claim_types": ["surgery_claim"],
+      "match": {
+        "diagnosis_any": ["appendicitis"],
+        "procedure_any": ["appendectomy", "appendicectomy"]
+      },
+      "required_documents": ["claim_form", "discharge_summary", "procedure_note", "bill"],
+      "clinical_rules": [
+        {
+          "rule_id": "imaging_support_appendicitis",
+          "field": "imaging_findings",
+          "contains_any": ["appendix", "appendicitis", "inflamed appendix"],
+          "severity": "medium",
+          "required": false,
+          "message": "Imaging evidence does not support appendicitis as expected by STG."
+        }
+      ]
+    },
+    {
+      "package_id": "fracture_fixation",
+      "package_name": "Fracture Fixation",
+      "claim_types": ["surgery_claim"],
+      "match": {
+        "diagnosis_any": ["fracture"],
+        "procedure_any": ["orif", "implant", "casting"]
+      },
+      "required_documents": ["claim_form", "discharge_summary", "procedure_note", "bill"],
+      "clinical_rules": [
+        {
+          "rule_id": "imaging_support_fracture",
+          "field": "imaging_findings",
+          "contains_any": ["fracture", "break", "displaced"],
+          "severity": "medium",
+          "required": false,
+          "message": "Imaging evidence does not support fracture fixation package."
+        }
+      ]
+    },
+    {
+      "package_id": "fever_medical_management",
+      "package_name": "Fever Medical Management",
+      "claim_types": ["medical_claim"],
+      "match": {
+        "diagnosis_any": ["fever", "infection"],
+        "procedure_any": []
+      },
+      "required_documents": ["claim_form", "discharge_summary", "bill"],
+      "clinical_rules": [
+        {
+          "rule_id": "fever_duration_min_days",
+          "field": "fever_duration_days",
+          "operator": ">=",
+          "value": 3,
+          "severity": "high",
+          "required": false,
+          "message": "Fever duration is below the STG minimum threshold."
+        },
+        {
+          "rule_id": "hemoglobin_safe_floor",
+          "field": "hemoglobin",
+          "operator": ">=",
+          "value": 7,
+          "severity": "high",
+          "required": false,
+          "message": "Hemoglobin is below the STG safe threshold."
+        }
+      ]
+    }
+  ]
+}

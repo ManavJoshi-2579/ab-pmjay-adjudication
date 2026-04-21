@@ -1,0 +1,5 @@
+Package Name: Appendicitis Appendectomy
+Mandatory Documents: Claim Form, Discharge Summary, Procedure Note, Final Bill
+Clinical Conditions: Diagnosis: appendicitis ; Procedure: appendectomy
+Required Investigations: Ultrasound abdomen
+Thresholds: Hb >= 7

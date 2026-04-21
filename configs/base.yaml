@@ -1,0 +1,217 @@
+project:
+  name: ab_pmjay_winner
+  version: "1.0.0"
+  environment: production
+
+pipeline:
+  cache:
+    enabled: true
+    ocr_dir: data/cache/ocr
+    preprocess_dir: data/cache/preprocessed
+    analytics_dir: data/cache/analytics
+  preprocess:
+    denoise: true
+    deskew: true
+    contrast_enhance: true
+    retry_profile: aggressive
+  ocr:
+    primary: paddle
+    fallbacks:
+      - doctr
+      - tesseract
+    weights:
+      paddle: 1.0
+      doctr: 0.85
+      tesseract: 0.75
+  classification:
+    primary: layoutlmv3
+    fallbacks:
+      - cnn_fallback
+      - keyword_rules
+    weights:
+      layoutlmv3: 1.0
+      cnn: 0.65
+      keyword_rules: 0.8
+    class_weights:
+      claim_form:
+        layoutlmv3: 1.0
+        cnn: 0.75
+        keyword_rules: 0.95
+      discharge_summary:
+        layoutlmv3: 1.05
+        cnn: 0.45
+        keyword_rules: 1.0
+      procedure_note:
+        layoutlmv3: 1.05
+        cnn: 0.4
+        keyword_rules: 0.95
+      bill:
+        layoutlmv3: 1.0
+        cnn: 0.4
+        keyword_rules: 1.0
+    keyword_boosts:
+      claim_form:
+        - claim form
+        - patient name
+        - admission date
+        - claim id
+      discharge_summary:
+        - discharge summary
+        - discharge date
+        - final diagnosis
+        - date of discharge
+      procedure_note:
+        - procedure note
+        - operation note
+        - surgeon
+        - operation theatre
+      bill:
+        - final bill
+        - invoice
+        - amount
+        - total amount
+    semantic_signals:
+      claim_form:
+        positive:
+          - admission
+          - preauth
+          - beneficiary
+          - claim id
+        negative:
+          - invoice
+          - total amount
+          - surgeon
+      discharge_summary:
+        positive:
+          - discharge
+          - final diagnosis
+          - discharge date
+          - summary
+        negative:
+          - invoice
+          - total amount
+          - operation theatre
+      procedure_note:
+        positive:
+          - procedure
+          - surgeon
+          - operation
+          - theatre
+        negative:
+          - invoice
+          - claim id
+          - discharge date
+      bill:
+        positive:
+          - amount
+          - invoice
+          - total
+          - final bill
+        negative:
+          - diagnosis
+          - discharge summary
+          - surgeon
+    hard_overrides:
+      claim_form:
+        - claim form
+      discharge_summary:
+        - discharge summary
+      procedure_note:
+        - procedure note
+        - operation note
+      bill:
+        - final bill
+        - invoice
+    block_segmentation:
+      enabled: true
+      regions:
+        - header
+        - body
+        - table
+        - footer
+  extraction:
+    primary: layoutlm_extractor
+    fallback: regex_backup
+    field_aliases:
+      patient_name:
+        - patient name
+        - beneficiary name
+        - name of patient
+      diagnosis:
+        - diagnosis
+        - final diagnosis
+        - provisional diagnosis
+      procedure:
+        - procedure
+        - procedure done
+        - operation
+        - operation performed
+      amounts:
+        - amount
+        - bill amount
+        - total amount
+        - invoice
+        - net payable
+      dates:
+        - date
+        - admission date
+        - discharge date
+        - procedure date
+    field_vocab:
+      diagnosis:
+        - appendicitis
+        - fracture
+        - cataract
+      procedure:
+        - appendectomy
+        - appendicectomy
+        - orif
+        - phaco
+        - implant
+        - implantation
+    section_aliases:
+      claim_form:
+        - claim form
+        - preauth
+        - claim id
+      discharge_summary:
+        - discharge summary
+        - final diagnosis
+        - date of discharge
+      procedure_note:
+        - procedure note
+        - operation note
+        - operation theatre
+        - surgeon
+      bill:
+        - final bill
+        - invoice
+        - total amount
+        - bill amount
+  vision:
+    primary: yolo
+  timeline:
+    timezone: Asia/Calcutta
+  outputs:
+    final_dir: outputs/final_json
+    debug_dir: outputs/debug
+    logs_dir: outputs/logs
+    visualizations_dir: outputs/visualizations
+  optimization:
+    self_evaluation: true
+    error_analysis: true
+    edge_case_simulation: true
+    batch_size: 4
+
+api:
+  title: AB PMJAY Auto Adjudication API
+  version: "1.0.0"
+  max_upload_files: 20
+
+paths:
+  input_dir: data/input
+  cache_dir: data/cache
+  synthetic_dir: data/synthetic
+  stg_dir: data/stg
+  model_dir: models
+  output_dir: outputs

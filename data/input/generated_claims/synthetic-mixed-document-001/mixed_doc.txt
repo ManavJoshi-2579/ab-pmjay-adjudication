@@ -1,0 +1,1 @@
+Discharge Summary Patient Name John Doe Procedure Appendectomy Invoice Total Amount 45000 Date of Discharge 2026-04-20

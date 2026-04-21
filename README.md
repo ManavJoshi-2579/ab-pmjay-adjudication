@@ -1,5 +1,7 @@
 # NHA STG-Based Adjudication System
 
+Production-ready, STG-driven AI system for automated healthcare claim adjudication under PMJAY.
+
 An explainable, production-style claim adjudication pipeline for PMJAY/NHA workflows that reads healthcare claim packets, reconstructs evidence across documents, validates them against Standard Treatment Guidelines, and produces auditable pass/fail decisions.
 
 ## Problem Statement
@@ -10,7 +12,19 @@ Healthcare claim review is slow, document-heavy, and difficult to standardize. A
 
 This repository presents a modular adjudication system that ingests claim documents, applies OCR and document understanding, extracts structured evidence, reconstructs the patient timeline, validates the packet against STG-based rules, and returns an explainable decision with reasons and confidence.
 
+This system mirrors real NHA adjudication workflows, including document sufficiency checks, clinical validation, and STG alignment.
+
 The goal is not a narrow, single-procedure checker. It is a procedure-agnostic STG-driven system designed to generalize across claim types while keeping the decision path transparent.
+
+The system prioritizes safe adjudication, ensuring uncertain or inconsistent claims are flagged instead of incorrectly approved.
+
+## Why This Solution Stands Out
+
+- Procedure-agnostic: scales across PMJAY packages instead of being limited to one procedure flow.
+- STG-driven: relies on configurable treatment-guideline logic, not just hardcoded rules.
+- Explainable: returns decision, evidence, and reasoning for each adjudication outcome.
+- Fail-safe: prioritizes flagging risky or inconsistent claims over unsafe approvals.
+- Production-ready: delivers an end-to-end pipeline from document intake to auditable output.
 
 ## Key Features
 
@@ -21,6 +35,23 @@ The goal is not a narrow, single-procedure checker. It is a procedure-agnostic S
 - Rule engine for document sufficiency, chronology, anomaly, and clinical checks.
 - Decision engine that consolidates signals into a final adjudication with confidence.
 - Explainability layer that surfaces reasons, evidence, and reviewer-friendly traces.
+
+## Quick Demo
+
+Run these two commands to verify the system quickly:
+
+```bash
+python scripts/generate_synthetic.py
+python -B main.py
+```
+
+What judges should observe:
+
+- `valid_claim` -> `Pass`
+- `missing_document` -> `Fail`
+- `clinical_violation` -> `Fail`
+
+This gives a fast view of baseline approval, missing-evidence detection, and clinical-rule enforcement.
 
 ## System Flow
 
@@ -107,6 +138,8 @@ Representative cases included in the repository:
 - Synthetic edge cases for noisy OCR, conflicting data, wrong sequence, mixed documents, and misleading layouts.
 
 ## Output Example
+
+Example adjudication output (structured, explainable, and auditable):
 
 ```json
 {

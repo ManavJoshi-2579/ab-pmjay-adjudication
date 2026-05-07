@@ -1,1 +1,0 @@
-Discharge Summary Patient Name John Doe Final Diagnosis Appendicitis Procedure Appendectomy Discharge Date 2026-04-20

@@ -1,0 +1,30 @@
+{
+  "MG064A": {
+    "rows": 1,
+    "errors": 0,
+    "warnings": 0,
+    "valid": true,
+    "issues": []
+  },
+  "SG039C": {
+    "rows": 1,
+    "errors": 0,
+    "warnings": 0,
+    "valid": true,
+    "issues": []
+  },
+  "MG006A": {
+    "rows": 0,
+    "errors": 0,
+    "warnings": 0,
+    "valid": true,
+    "issues": []
+  },
+  "SB039A": {
+    "rows": 8,
+    "errors": 0,
+    "warnings": 0,
+    "valid": true,
+    "issues": []
+  }
+}

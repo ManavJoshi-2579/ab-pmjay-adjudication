@@ -1,0 +1,17 @@
+{
+  "case_id": "PMJAY_KL_2025_R2_2026031510006070",
+  "package_code": "MG006A",
+  "decision": "CONDITIONAL",
+  "confidence": 0.65,
+  "reasons": [
+    "Missing mandatory documents: investigation_pre, vitals_treatment, investigation_post, discharge_summary"
+  ],
+  "missing_documents": [
+    "investigation_pre",
+    "vitals_treatment",
+    "investigation_post",
+    "discharge_summary"
+  ],
+  "rule_flags": [],
+  "timeline_flags": []
+}

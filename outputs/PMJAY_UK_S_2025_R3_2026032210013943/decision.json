@@ -1,0 +1,21 @@
+{
+  "case_id": "PMJAY_UK_S_2025_R3_2026032210013943",
+  "package_code": "SB039A",
+  "decision": "FAIL",
+  "confidence": 0.45,
+  "reasons": [
+    "Missing mandatory documents: clinical_notes, indoor_case, operative_notes, implant_invoice, post_op_photo, post_op_xray, discharge_summary",
+    "Clinical condition/sign evidence not detected"
+  ],
+  "missing_documents": [
+    "clinical_notes",
+    "indoor_case",
+    "operative_notes",
+    "implant_invoice",
+    "post_op_photo",
+    "post_op_xray",
+    "discharge_summary"
+  ],
+  "rule_flags": [],
+  "timeline_flags": []
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "case_id": "PMJAY_JK_S_G_2025_R2_1022078073",
+    "S3_link/DocumentName": "Claim_Documents/000727__PMJAY_JK_S_G_2025_R2_1022078073__LFT.jpeg",
+    "procedure_code": "SG039C",
+    "page_number": 1,
+    "clinical_notes": 0,
+    "usg_report": 0,
+    "lft_report": 1,
+    "operative_notes": 0,
+    "pre_anesthesia": 0,
+    "discharge_summary": 0,
+    "photo_evidence": 0,
+    "histopathology": 0,
+    "clinical_condition": 0,
+    "usg_calculi": 0,
+    "pain_present": 0,
+    "previous_surgery": 0,
+    "extra_document": 0,
+    "document_rank": 2
+  }
+]

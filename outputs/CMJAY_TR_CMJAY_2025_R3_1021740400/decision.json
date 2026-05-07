@@ -1,0 +1,19 @@
+{
+  "case_id": "CMJAY_TR_CMJAY_2025_R3_1021740400",
+  "package_code": "SB039A",
+  "decision": "FAIL",
+  "confidence": 0.45,
+  "reasons": [
+    "Missing mandatory documents: clinical_notes, indoor_case, operative_notes, post_op_photo, discharge_summary",
+    "Clinical condition/sign evidence not detected"
+  ],
+  "missing_documents": [
+    "clinical_notes",
+    "indoor_case",
+    "operative_notes",
+    "post_op_photo",
+    "discharge_summary"
+  ],
+  "rule_flags": [],
+  "timeline_flags": []
+}

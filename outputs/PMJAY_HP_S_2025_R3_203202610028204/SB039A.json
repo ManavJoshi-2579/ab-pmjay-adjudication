@@ -1,0 +1,23 @@
+[
+  {
+    "case_id": "PMJAY_HP_S_2025_R3_203202610028204",
+    "s3_link": "Claim_Documents/000761__PMJAY_HP_S_2025_R3_203202610028204__X-RAY.jpeg",
+    "procedure_code": "SB039A",
+    "page_number": 1,
+    "clinical_notes": 0,
+    "xray_ct_knee": 1,
+    "indoor_case": 0,
+    "operative_notes": 0,
+    "implant_invoice": 0,
+    "post_op_photo": 0,
+    "post_op_xray": 0,
+    "discharge_summary": 0,
+    "doa": null,
+    "dod": null,
+    "arthritis_type": 0,
+    "post_op_implant_present": 0,
+    "age_valid": 0,
+    "extra_document": 0,
+    "document_rank": 2
+  }
+]

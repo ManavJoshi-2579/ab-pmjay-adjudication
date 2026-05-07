@@ -1,0 +1,19 @@
+{
+  "case_id": "PMJAY_JK_S_G_2025_R2_1022078073",
+  "package_code": "MG064A",
+  "decision": "FAIL",
+  "confidence": 0.45,
+  "reasons": [
+    "Missing mandatory documents: clinical_notes, indoor_case, treatment_details, post_hb_report, discharge_summary",
+    "Clinical condition/sign evidence not detected"
+  ],
+  "missing_documents": [
+    "clinical_notes",
+    "indoor_case",
+    "treatment_details",
+    "post_hb_report",
+    "discharge_summary"
+  ],
+  "rule_flags": [],
+  "timeline_flags": []
+}

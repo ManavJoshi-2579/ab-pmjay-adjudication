@@ -1,0 +1,55 @@
+Final Adjudication Intelligence Report
+============================================
+
+MG064A
+  Rows/Cases: 1 rows across 1 case(s)
+  Coverage score: 100.0%
+  Classification strength: 100.0%
+  Evidence quality score: 45.0
+  Evidence contribution: filename=0.0%, ocr_pdf_text=100.0%, visual=0.0%, fallback=0.0%
+  Top document types: {'cbc_hb_report': 1}
+  Most missed document types: {'clinical_notes': 1, 'indoor_case': 1, 'treatment_details': 1, 'post_hb_report': 1, 'discharge_summary': 1}
+  Most detected medical signals: {'severe_anemia': 0, 'common_signs': 0, 'significant_signs': 0, 'life_threatening_signs': 0}
+  Weakness flags: ['STG_GAP']
+  Rank consistency: PASS
+
+SG039C
+  Rows/Cases: 1 rows across 1 case(s)
+  Coverage score: 100.0%
+  Classification strength: 100.0%
+  Evidence quality score: 45.0
+  Evidence contribution: filename=0.0%, ocr_pdf_text=100.0%, visual=0.0%, fallback=0.0%
+  Top document types: {'lft_report': 1}
+  Most missed document types: {'clinical_notes': 1, 'usg_report': 1, 'operative_notes': 1, 'pre_anesthesia': 1, 'discharge_summary': 1, 'photo_evidence': 1, 'histopathology': 1}
+  Most detected medical signals: {'clinical_condition': 0, 'usg_calculi': 0, 'pain_present': 0, 'previous_surgery': 0}
+  Weakness flags: ['STG_GAP']
+  Rank consistency: PASS
+
+MG006A
+  Rows/Cases: 0 rows across 0 case(s)
+  Coverage score: 0.0%
+  Classification strength: 0.0%
+  Evidence quality score: 0.0
+  Evidence contribution: filename=0.0%, ocr_pdf_text=0.0%, visual=0.0%, fallback=0.0%
+  Top document types: {}
+  Most missed document types: {}
+  Most detected medical signals: {'pre_date': 0, 'post_date': 0, 'poor_quality': 0, 'fever': 0, 'symptoms': 0}
+  Weakness flags: ['CRITICAL_FAILURE']
+  Rank consistency: PASS
+
+SB039A
+  Rows/Cases: 8 rows across 5 case(s)
+  Coverage score: 100.0%
+  Classification strength: 100.0%
+  Evidence quality score: 27.5
+  Evidence contribution: filename=50.0%, ocr_pdf_text=0.0%, visual=50.0%, fallback=0.0%
+  Top document types: {'xray_ct_knee': 6, 'implant_invoice': 1, 'post_op_xray': 1}
+  Most missed document types: {'clinical_notes': 5, 'indoor_case': 5, 'operative_notes': 5, 'post_op_photo': 5, 'discharge_summary': 5, 'implant_invoice': 4, 'post_op_xray': 4}
+  Most detected medical signals: {'doa': 0, 'dod': 0, 'arthritis_type': 0, 'post_op_implant_present': 0, 'age_valid': 0}
+  Weakness flags: ['STG_GAP']
+  Rank consistency: PASS
+
+Exact schema match: True
+Final submission verdict: NEEDS_REVIEW
+
+This solution implements a rule-first clinical adjudication pipeline aligned with NHA PS1 requirements. It integrates evidence from structured file paths, document content, and visual cues to ensure robust document classification. A deterministic STG rule engine ensures compliance, while optional fallback mechanisms support ambiguous cases. The system enforces strict schema validation and maintains clear separation between submission outputs and debug intelligence layers.

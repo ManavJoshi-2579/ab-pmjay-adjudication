@@ -1,0 +1,173 @@
+{
+  "report_name": "Final Adjudication Intelligence Report",
+  "packages": {
+    "MG064A": {
+      "total_rows": 1,
+      "case_count": 1,
+      "non_extra_rows": 1,
+      "extra_document_rows": 0,
+      "coverage_score": 100.0,
+      "classification_strength": 100.0,
+      "evidence_quality_score": 45.0,
+      "evidence_contribution_pct": {
+        "filename": 0.0,
+        "ocr_pdf_text": 100.0,
+        "visual_signals": 0.0,
+        "fallback_unknown": 0.0
+      },
+      "top_document_types": {
+        "cbc_hb_report": 1
+      },
+      "most_missed_document_types": {
+        "clinical_notes": 1,
+        "indoor_case": 1,
+        "treatment_details": 1,
+        "post_hb_report": 1,
+        "discharge_summary": 1
+      },
+      "most_detected_medical_signals": {
+        "severe_anemia": 0,
+        "common_signs": 0,
+        "significant_signs": 0,
+        "life_threatening_signs": 0
+      },
+      "weakness_flags": [
+        "STG_GAP"
+      ],
+      "schema_ok": true,
+      "schema_issue_count": 0,
+      "rank_consistency": "PASS"
+    },
+    "SG039C": {
+      "total_rows": 1,
+      "case_count": 1,
+      "non_extra_rows": 1,
+      "extra_document_rows": 0,
+      "coverage_score": 100.0,
+      "classification_strength": 100.0,
+      "evidence_quality_score": 45.0,
+      "evidence_contribution_pct": {
+        "filename": 0.0,
+        "ocr_pdf_text": 100.0,
+        "visual_signals": 0.0,
+        "fallback_unknown": 0.0
+      },
+      "top_document_types": {
+        "lft_report": 1
+      },
+      "most_missed_document_types": {
+        "clinical_notes": 1,
+        "usg_report": 1,
+        "operative_notes": 1,
+        "pre_anesthesia": 1,
+        "discharge_summary": 1,
+        "photo_evidence": 1,
+        "histopathology": 1
+      },
+      "most_detected_medical_signals": {
+        "clinical_condition": 0,
+        "usg_calculi": 0,
+        "pain_present": 0,
+        "previous_surgery": 0
+      },
+      "weakness_flags": [
+        "STG_GAP"
+      ],
+      "schema_ok": true,
+      "schema_issue_count": 0,
+      "rank_consistency": "PASS"
+    },
+    "MG006A": {
+      "total_rows": 0,
+      "case_count": 0,
+      "non_extra_rows": 0,
+      "extra_document_rows": 0,
+      "coverage_score": 0.0,
+      "classification_strength": 0.0,
+      "evidence_quality_score": 0.0,
+      "evidence_contribution_pct": {
+        "filename": 0.0,
+        "ocr_pdf_text": 0.0,
+        "visual_signals": 0.0,
+        "fallback_unknown": 0.0
+      },
+      "top_document_types": {},
+      "most_missed_document_types": {},
+      "most_detected_medical_signals": {
+        "pre_date": 0,
+        "post_date": 0,
+        "poor_quality": 0,
+        "fever": 0,
+        "symptoms": 0
+      },
+      "weakness_flags": [
+        "CRITICAL_FAILURE"
+      ],
+      "schema_ok": true,
+      "schema_issue_count": 0,
+      "rank_consistency": "PASS"
+    },
+    "SB039A": {
+      "total_rows": 8,
+      "case_count": 5,
+      "non_extra_rows": 8,
+      "extra_document_rows": 0,
+      "coverage_score": 100.0,
+      "classification_strength": 100.0,
+      "evidence_quality_score": 27.5,
+      "evidence_contribution_pct": {
+        "filename": 50.0,
+        "ocr_pdf_text": 0.0,
+        "visual_signals": 50.0,
+        "fallback_unknown": 0.0
+      },
+      "top_document_types": {
+        "xray_ct_knee": 6,
+        "implant_invoice": 1,
+        "post_op_xray": 1
+      },
+      "most_missed_document_types": {
+        "clinical_notes": 5,
+        "indoor_case": 5,
+        "operative_notes": 5,
+        "post_op_photo": 5,
+        "discharge_summary": 5,
+        "implant_invoice": 4,
+        "post_op_xray": 4
+      },
+      "most_detected_medical_signals": {
+        "doa": 0,
+        "dod": 0,
+        "arthritis_type": 0,
+        "post_op_implant_present": 0,
+        "age_valid": 0
+      },
+      "weakness_flags": [
+        "STG_GAP"
+      ],
+      "schema_ok": true,
+      "schema_issue_count": 0,
+      "rank_consistency": "PASS"
+    }
+  },
+  "rank_consistency": {
+    "MG064A": {
+      "status": "PASS",
+      "failures": []
+    },
+    "SG039C": {
+      "status": "PASS",
+      "failures": []
+    },
+    "MG006A": {
+      "status": "PASS",
+      "failures": []
+    },
+    "SB039A": {
+      "status": "PASS",
+      "failures": []
+    }
+  },
+  "submission_verdict": "NEEDS_REVIEW",
+  "exact_schema_match": true
+}

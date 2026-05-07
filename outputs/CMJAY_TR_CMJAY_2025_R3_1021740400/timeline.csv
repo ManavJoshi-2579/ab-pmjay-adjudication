@@ -1,0 +1,4 @@
+Sequence,Event Type,Date,Source Document,Temporal Validity
+2,xray_ct_knee,,Claim_Documents/000523__CMJAY_TR_CMJAY_2025_R3_1021740400__XRAY.jpeg,Valid
+3,implant_invoice,,Claim_Documents/000526__CMJAY_TR_CMJAY_2025_R3_1021740400__BARCODE.jpg,Valid
+4,post_op_xray,,Claim_Documents/000527__CMJAY_TR_CMJAY_2025_R3_1021740400__POST_XRAY.jpeg,Valid

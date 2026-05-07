@@ -1,0 +1,11 @@
+case_id,package_code,file,page,doc_type,confidence_score,doc_type_confidence,classifier_reason,top_scores,low_confidence,text_chars
+CMJAY_TR_CMJAY_2025_R3_1021740400,SB039A,Claim_Documents/000523__CMJAY_TR_CMJAY_2025_R3_1021740400__XRAY.jpeg,1,xray_ct_knee,0.95,0.95,xray+9; xray+8; visual xray+3,xray_ct_knee:20,0,47
+CMJAY_TR_CMJAY_2025_R3_1021740400,SB039A,Claim_Documents/000526__CMJAY_TR_CMJAY_2025_R3_1021740400__BARCODE.jpg,1,implant_invoice,0.95,0.95,barcode+9,implant_invoice:9; post_op_photo:3,0,50
+CMJAY_TR_CMJAY_2025_R3_1021740400,SB039A,Claim_Documents/000527__CMJAY_TR_CMJAY_2025_R3_1021740400__POST_XRAY.jpeg,1,post_op_xray,0.95,0.95,post xray+9,post_op_xray:9; xray_ct_knee:8; post_op_photo:3,0,52
+GJAY_ODISHA_G_1021858852,SB039A,Claim_Documents/000657__GJAY_ODISHA_G_1021858852__X_RAY.pdf,1,xray_ct_knee,0.95,0.95,ray/x+9; x ray+8; x-ray+8,xray_ct_knee:25,0,3545
+PMJAY_ODISHA_G_R1_2802202610032381,SB039A,Claim_Documents/000712__PMJAY_ODISHA_G_R1_2802202610032381__Pravakar_Naik_X-ray.pdf,1,xray_ct_knee,0.95,0.95,ray/x+9; x ray+8; x-ray+8,xray_ct_knee:25,0,14621
+PMJAY_ODISHA_G_R1_2802202610032381,SB039A,Claim_Documents/000716__PMJAY_ODISHA_G_R1_2802202610032381__pravakar_naik_XRAY.pdf,1,xray_ct_knee,0.95,0.95,xray+9; xray+8,xray_ct_knee:17,0,25940
+PMJAY_JK_S_G_2025_R2_1022078073,SG039C,Claim_Documents/000727__PMJAY_JK_S_G_2025_R2_1022078073__LFT.jpeg,1,lft_report,0.94,0.94,filename deterministic lft,lft_report:20,0,44
+PMJAY_JK_S_G_2025_R2_1022078073,MG064A,Claim_Documents/000728__PMJAY_JK_S_G_2025_R2_1022078073__CBC.jpeg,1,cbc_hb_report,0.94,0.94,filename deterministic cbc,cbc_hb_report:20,0,44
+PMJAY_HP_S_2025_R3_203202610028204,SB039A,Claim_Documents/000761__PMJAY_HP_S_2025_R3_203202610028204__X-RAY.jpeg,1,xray_ct_knee,0.95,0.95,ray/x+9; x ray+8; x-ray+8; visual xray+3,xray_ct_knee:28,0,49
+PMJAY_UP_S_G_2025_R2_2026030910078737,SB039A,Claim_Documents/000887__PMJAY_UP_S_G_2025_R2_2026030910078737__XRAY.jpg,1,xray_ct_knee,0.95,0.95,xray+9; xray+8,xray_ct_knee:17,0,51

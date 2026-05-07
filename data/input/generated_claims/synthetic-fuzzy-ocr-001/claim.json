@@ -1,0 +1,5 @@
+{
+  "claim_id": "synthetic-fuzzy-ocr-001",
+  "scenario": "fuzzy_ocr_noise",
+  "claim_type": "surgery_claim"
+}

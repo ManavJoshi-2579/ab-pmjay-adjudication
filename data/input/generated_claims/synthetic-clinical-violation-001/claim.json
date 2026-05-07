@@ -1,0 +1,5 @@
+{
+  "claim_id": "synthetic-clinical-violation-001",
+  "scenario": "clinical_violation",
+  "claim_type": "medical_claim"
+}

@@ -1,0 +1,5 @@
+{
+  "claim_id": "synthetic-noisy-ocr-001",
+  "scenario": "noisy_ocr",
+  "claim_type": "surgery_claim"
+}

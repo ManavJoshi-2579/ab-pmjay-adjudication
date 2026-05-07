@@ -1,4 +1,17 @@
 .cache/
 __pycache__/
+**/__pycache__/
 *.py[cod]
+*.pyc
+*.log
 .ipynb_checkpoints/
+outputs/
+data/cache/
+.env
+.DS_Store
+.pytest_cache/
+.coverage
+htmlcov/
+rename_log*.txt
+data/input/tmp/
+data/input/tmp2/

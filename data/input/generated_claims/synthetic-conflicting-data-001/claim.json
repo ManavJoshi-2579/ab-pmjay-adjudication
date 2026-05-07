@@ -1,0 +1,5 @@
+{
+  "claim_id": "synthetic-conflicting-data-001",
+  "scenario": "conflicting_data",
+  "claim_type": "surgery_claim"
+}
